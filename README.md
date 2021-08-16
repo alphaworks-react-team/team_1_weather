@@ -16,7 +16,7 @@ API key should not be commited on git in plain text. Add a `.env` file, add your
 - clone this repo to your computer. 
 - cd into project folder.
 - create a new react app with: `npx create-react-app client` ***Important to call it "client"***
-- cd into client
+- cd into client \n
 ***Importnat steps below***
 - create a .env to store your api key with. Example: `REACT_APP_W_KEY=[your_api_key_here]`
 - add `.env` to `.gitignore` file
