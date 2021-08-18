@@ -80,7 +80,7 @@ function App() {
 						<SoftBox height={"20%"}></SoftBox>
 						<SoftBox height={"20%"}></SoftBox>
 					</SoftBox>
-					<DailyForecast />
+          <DailyForecast dailyWeather={dailyWeather.list}/>
 				</Body>
 				<SideBar>
 					<Search SearchSubmit={SearchSubmit} />
