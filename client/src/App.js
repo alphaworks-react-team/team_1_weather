@@ -82,7 +82,9 @@ function App() {
 					</SoftBox>
 					<DailyForecast />
 				</Body>
-				<SideBar />
+				<SideBar>
+					<Search SearchSubmit={SearchSubmit} />
+				</SideBar>
 			</Main>
 		</div>
 	);
