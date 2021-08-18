@@ -5,7 +5,7 @@ export const currentWeatherData = async (city = "maryland") => {
     const request = await axios.get(
 			`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`
     );
-    console.log(request.data);
+    // console.log(request.data);
     return request;
 }
 

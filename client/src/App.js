@@ -4,6 +4,7 @@ import Body from "./Components/Body/Body";
 import SideBar from "./Components/SideBar/SideBar"
 import { currentWeatherData,dailyWeatherData, getCurrentLocationWeather } from "./utils/utils";
 import { useEffect, useState } from "react";
+import DailyForecast from "./Components/DailyForecast/DailyForecast";
 function App() {
   const [latitude, setLatitude] = useState();
 	const [longitude, setLongitude] = useState();
@@ -38,7 +39,9 @@ function App() {
   return (
     <div className="App">
       <Main>
-        <Body />
+        <Body>          
+          <DailyForecast/>
+        </Body>
         <SideBar/>
       </Main>
     </div>

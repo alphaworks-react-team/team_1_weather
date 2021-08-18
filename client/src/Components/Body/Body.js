@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-const Body = () => {
+import DailyForecast from '../DailyForecast/DailyForecast'
+const Body = (props) => {
     return (
         <MainBody>
-            
+            {props.children}
         </MainBody>
     )
 }
