@@ -12,7 +12,7 @@ import {
 } from "./utils/utils";
 
 import { useEffect, useState } from "react";
-
+import DailyForecast from "./Components/DailyForecast/DailyForecast";
 function App() {
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
@@ -52,30 +52,31 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Main>
-        <Body>
-          <SoftBox height={"20%"}>
-            <h1>Hi</h1>
-          </SoftBox>
-          <SoftBox height={"60%"}>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-          </SoftBox>
-          <SoftBox height={"20%"}>
-            <h1>Hi</h1>
-          </SoftBox>
-        </Body>
-        <SideBar />
-      </Main>
-    </div>
-  );
+		<div className="App">
+			<Main>
+				<Body>
+					<SoftBox height={"20%"}>
+						<h1>Hi</h1>
+					</SoftBox>
+					<SoftBox height={"60%"}>
+						<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+						<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+						<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+						<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+						<SoftBox height={"20%"}></SoftBox>
+						<SoftBox height={"20%"}></SoftBox>
+						<SoftBox height={"20%"}></SoftBox>
+						<SoftBox height={"20%"}></SoftBox>
+					</SoftBox>
+					<SoftBox height={"20%"}>
+						<h1>Hi</h1>
+					</SoftBox>
+					<DailyForecast />
+				</Body>
+				<SideBar />
+			</Main>
+		</div>
+	);
 }
 
 export default App;
