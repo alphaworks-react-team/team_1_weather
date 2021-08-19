@@ -18,8 +18,8 @@ function App() {
 	const [longitude, setLongitude] = useState();
 	const [forcast, setForcast] = useState([]);
 	const [currentWeather, setCurrentWeather] = useState({});
-  const [dailyWeather, setDailyWeather] = useState();
-  const [isLoaded, setSetLoaded] = useState(false);
+	const [dailyWeather, setDailyWeather] = useState();
+	const [isLoaded, setIsLoaded] = useState(false);
 
 	const successful = (position) => {
 		// console.log(position.coords);
@@ -58,35 +58,32 @@ function App() {
 		console.log(value);
 		const weather = await currentWeatherData(value);
 		const dailyWeather = await dailyWeatherData(value);
-		console.log("current weather:", weather);
-		console.log("daily weather:", dailyWeather);
+		// console.log("current weather:", weather);
+		// console.log("daily weather:", dailyWeather);
 		setCurrentWeather(weather.data);
 		setDailyWeather(dailyWeather.data);
+		setIsLoaded(true);
 	};
 
 	return (
 		<div className="App">
 			<Main>
 				<Body>
-					{!dailyWeather ? (
-						<>
-							<SoftBox height={"20%"}>
-								<h1>Hi</h1>
-							</SoftBox>
-							<SoftBox height={"50%"}>
-								<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-								<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-								<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-								<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-								<SoftBox height={"20%"}></SoftBox>
-								<SoftBox height={"20%"}></SoftBox>
-								<SoftBox height={"20%"}></SoftBox>
-								<SoftBox height={"20%"}></SoftBox>
-							</SoftBox>
-						</>
-					) : (
-						<DailyForecast dailyWeather={dailyWeather.list} />
-					)}
+					<SoftBox height={"20%"}>
+						<h1>Hi</h1>
+					</SoftBox>
+					<SoftBox height={"50%"}>
+						<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+						<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+						<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+						<SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+						<SoftBox height={"20%"}></SoftBox>
+						<SoftBox height={"20%"}></SoftBox>
+						<SoftBox height={"20%"}></SoftBox>
+						<SoftBox height={"20%"}></SoftBox>
+					</SoftBox>
+
+					{isLoaded && <DailyForecast dailyWeather={dailyWeather.list} />}
 				</Body>
 				<SideBar>
 					<Search SearchSubmit={SearchSubmit} />
