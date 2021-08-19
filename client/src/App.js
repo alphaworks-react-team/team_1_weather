@@ -8,6 +8,8 @@ import styled from "styled-components";
 import DailyForecast from "./Components/DailyForecast/DailyForecast";
 import Search from "./Components/Search/Search";
 import CurrentWeather from "./Components/CurrentWeather/CurrentWeather";
+import TimeDay from "./Components/Time/TimeDay";
+import HistoryContainer from "./Components/History/History";
 import {
   currentWeatherData,
   dailyWeatherData,
@@ -19,7 +21,10 @@ function App() {
   const [longitude, setLongitude] = useState();
   const [forcast, setForcast] = useState([]);
   const [currentWeather, setCurrentWeather] = useState({});
-  const [dailyWeather, setDailyWeather] = useState({});
+  const [dailyWeather, setDailyWeather] = useState();
+  const [currentLocationWeather, setCurrentLocationWeather] = useState();
+  const [history, setHistory] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const successful = (position) => {
     // console.log(position.coords);
@@ -43,14 +48,27 @@ function App() {
       setForcast([...data.list.splice(0, 4)])
     );
 
-    navigator.geolocation.getCurrentPosition(successful, error, options);
+    // navigator.geolocation.getCurrentPosition(successful, error, options);
 
-    async function fetchData() {
-      await getCurrentLocationWeather(latitude, longitude);
-    }
+    // async function fetchData() {
+    //   await getCurrentLocationWeather(latitude, longitude).then(({ data }) =>
+    //     // console.log(data)
+    //     setCurrentLocationWeather(data)
+    //   );
+    // }
 
-    fetchData();
+    // fetchData();
     // console.log(latitude, longitude);
+  }, []);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async (data) => {
+      const lat = data.coords.latitude;
+      const lon = data.coords.longitude;
+      const weather = await getCurrentLocationWeather(lat, lon);
+      setCurrentLocationWeather(weather.data);
+      // console.log("location weather:", weather.data);
+    });
   }, []);
 
   const SearchSubmit = async (e, value) => {
@@ -58,39 +76,40 @@ function App() {
     console.log(value);
     const weather = await currentWeatherData(value);
     const dailyWeather = await dailyWeatherData(value);
-    console.log("current weather:", weather);
-    console.log("daily weather:", dailyWeather);
+    // console.log("current weather:", weather);
+    // console.log("daily weather:", dailyWeather);
     setCurrentWeather(weather.data);
     setDailyWeather(dailyWeather.data);
+    setHistory([...history, weather.data]);
+    // setCurrentLocationWeather(null);
+    setIsLoaded(true);
   };
 
   return (
     <div className="App">
       <Main>
         <Body>
-          <SoftBox height={"20%"}>
-            <h1>Hi</h1>
+          <TimeDay
+            weather={currentWeather ? currentWeather : currentLocationWeather}
+          />
+          <SoftBox height={"50%"}>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
           </SoftBox>
-          <SoftBox height={"60%"}>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-          </SoftBox>
-          <SoftBox height={"20%"}>
-            <h1>Hi</h1>
-          </SoftBox>
-          <DailyForecast />
+          {isLoaded && <DailyForecast dailyWeather={dailyWeather.list} />}
         </Body>
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
 		      <CurrentWeather 
           location={currentLocationWeather.name}
           />
+          <HistoryContainer />
         </SideBar>
       </Main>
     </div>
