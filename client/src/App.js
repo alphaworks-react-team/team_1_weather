@@ -93,10 +93,10 @@ function App() {
             <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
             <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
             <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
-            <SoftBox height={"20%"}></SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
+            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
           </SoftBox>
           {isLoaded && <DailyForecast dailyWeather={dailyWeather.list} />}
         </Body>
