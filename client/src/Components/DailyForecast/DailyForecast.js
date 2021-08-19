@@ -3,12 +3,10 @@ import { DayStyle, DayIcon } from "./DayStyle";
 
 const DailyForecast = (props) => {
 	const [dayWeather, setDayWeather] = useState([]);
-	// const [newDay, setNewDay] = useState([]);
-	// const [icon, setIcon] = useState("");
 
 	useEffect(() => {
 		dayData();
-	}, []);
+	}, [props.dailyWeather]);
 
 	const dayData = () => {
 		const dataArr = [];
@@ -18,6 +16,12 @@ const DailyForecast = (props) => {
 		setDayWeather(dataArr);
 	};
 
+	const days = (time) => {
+		let day = new Date(time*1000).toLocaleTimeString("en-US", { weekday: "short" });
+		console.log(day)
+		return(day.substring(0, 3));
+	};
+console.log(days(1629406800));
 	const styles = {
 		height: "30%",
 		width: "100%",
@@ -30,14 +34,14 @@ const DailyForecast = (props) => {
 
 	return (
 		<div style={styles}>
-			{dayWeather.map((item) => (
-				<DayStyle>
-					Mon
+			{dayWeather.map((item, index) => (
+				<DayStyle key={index}>
+					{days(item.dt)}
 					<DayIcon
 						src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
 						alt=""
 					/>
-					75
+					{item.main.temp} °F
 				</DayStyle>
 			))}
 		</div>
