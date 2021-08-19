@@ -7,6 +7,7 @@ import SoftBox from "./Components/SoftBox/SoftBox";
 import styled from "styled-components";
 import DailyForecast from "./Components/DailyForecast/DailyForecast";
 import Search from "./Components/Search/Search";
+import TimeDay from "./Components/Time/TimeDay";
 import {
   currentWeatherData,
   dailyWeatherData,
@@ -14,27 +15,28 @@ import {
 } from "./utils/utils";
 
 function App() {
-  const [latitude, setLatitude] = useState();
-  const [longitude, setLongitude] = useState();
+  // const [latitude, setLatitude] = useState();
+  // const [longitude, setLongitude] = useState();
   const [forcast, setForcast] = useState([]);
-  const [currentWeather, setCurrentWeather] = useState({});
-  const [dailyWeather, setDailyWeather] = useState({});
+  const [currentWeather, setCurrentWeather] = useState();
+  const [dailyWeather, setDailyWeather] = useState();
+  const [currentLocationWeather, setCurrentLocationWeather] = useState();
 
-  const successful = (position) => {
-    // console.log(position.coords);
-    setLatitude(position.coords.latitude);
-    setLongitude(position.coords.longitude);
-  };
+  // const successful = (position) => {
+  //   // console.log(position);
+  //   setLatitude(position.coords.latitude);
+  //   setLongitude(position.coords.longitude);
+  // };
 
-  const error = (err) => {
-    console.log(err);
-  };
+  // const error = (err) => {
+  //   console.log("error:", err);
+  // };
 
-  var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0,
-  };
+  // var options = {
+  //   enableHighAccuracy: true,
+  //   timeout: 5000,
+  //   maximumAge: 0,
+  // };
 
   useEffect(() => {
     // currentWeatherData().then(({ data }) => console.log("data", data));
@@ -42,14 +44,27 @@ function App() {
       setForcast([...data.list.splice(0, 4)])
     );
 
-    navigator.geolocation.getCurrentPosition(successful, error, options);
+    // navigator.geolocation.getCurrentPosition(successful, error, options);
 
-    async function fetchData() {
-      await getCurrentLocationWeather(latitude, longitude);
-    }
+    // async function fetchData() {
+    //   await getCurrentLocationWeather(latitude, longitude).then(({ data }) =>
+    //     // console.log(data)
+    //     setCurrentLocationWeather(data)
+    //   );
+    // }
 
-    fetchData();
+    // fetchData();
     // console.log(latitude, longitude);
+  }, []);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async (data) => {
+      const lat = data.coords.latitude;
+      const lon = data.coords.longitude;
+      const weather = await getCurrentLocationWeather(lat, lon);
+      setCurrentLocationWeather(weather.data);
+      // console.log("location weather:", weather.data);
+    });
   }, []);
 
   const SearchSubmit = async (e, value) => {
@@ -57,20 +72,21 @@ function App() {
     console.log(value);
     const weather = await currentWeatherData(value);
     const dailyWeather = await dailyWeatherData(value);
-    console.log("current weather:", weather);
-    console.log("daily weather:", dailyWeather);
+    // console.log("current weather:", weather);
+    // console.log("daily weather:", dailyWeather);
     setCurrentWeather(weather.data);
     setDailyWeather(dailyWeather.data);
+    // setCurrentLocationWeather(null);
   };
 
   return (
     <div className="App">
       <Main>
         <Body>
-          <SoftBox height={"20%"}>
-            <h1>Hi</h1>
-          </SoftBox>
-          <SoftBox height={"60%"}>
+          <TimeDay
+            weather={currentWeather ? currentWeather : currentLocationWeather}
+          />
+          <SoftBox height={"50%"}>
             <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
             <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
             <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
@@ -79,9 +95,6 @@ function App() {
             <SoftBox height={"20%"}></SoftBox>
             <SoftBox height={"20%"}></SoftBox>
             <SoftBox height={"20%"}></SoftBox>
-          </SoftBox>
-          <SoftBox height={"20%"}>
-            <h1>Hi</h1>
           </SoftBox>
           <DailyForecast />
         </Body>
