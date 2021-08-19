@@ -5,7 +5,6 @@ import Body from "./Components/Body/Body";
 import SideBar from "./Components/SideBar/SideBar";
 import DailyForecast from "./Components/DailyForecast/DailyForecast";
 import Search from "./Components/Search/Search";
-import CurrentWeather from "./Components/CurrentWeather/CurrentWeather";
 import TimeDay from "./Components/Time/TimeDay";
 import HistoryContainer from "./Components/History/History";
 import {
@@ -14,6 +13,8 @@ import {
   getCurrentLocationWeather,
 } from "./utils/utils";
 import HourlyData from "./Components/HourlyData/HourlyData";
+import CurrentWeather from "./Components/CurrentWeather/CurrentWeather";
+
 function App() {
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
@@ -98,6 +99,16 @@ function App() {
           <Search SearchSubmit={SearchSubmit} />
           <CurrentWeather
             location={currentLocationWeather && currentLocationWeather.name}
+            date={currentLocationWeather && currentLocationWeather.dt}
+            temp={currentLocationWeather && currentLocationWeather.main.temp}
+            description={
+              currentLocationWeather &&
+              currentLocationWeather.weather[0].description
+            }
+            wind={currentLocationWeather && currentLocationWeather.wind.speed}
+            humidity={
+              currentLocationWeather && currentLocationWeather.main.humidity
+            }
           />
           <HistoryContainer history={history} />
         </SideBar>
