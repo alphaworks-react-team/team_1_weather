@@ -2,8 +2,10 @@ import "./App.css";
 import Main from "./Components/Main/MainGlass";
 import Body from "./Components/Body/Body";
 import SideBar from "./Components/SideBar/SideBar"
+import CurrentWeather from "./Components/CurrentWeather/CurrentWeather";
 import { currentWeatherData,dailyWeatherData, getCurrentLocationWeather } from "./utils/utils";
 import { useEffect, useState } from "react";
+
 function App() {
   const [latitude, setLatitude] = useState();
 	const [longitude, setLongitude] = useState();
@@ -39,7 +41,9 @@ function App() {
     <div className="App">
       <Main>
         <Body />
-        <SideBar/>
+        <SideBar>
+		<CurrentWeather />	
+		</SideBar>
       </Main>
     </div>
   );
