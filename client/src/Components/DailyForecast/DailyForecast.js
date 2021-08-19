@@ -3,21 +3,22 @@ import { DayStyle, DayIcon } from "./DayStyle";
 
 const DailyForecast = (props) => {
 	const [dayWeather, SetDayWeather] = useState({});
-	const [icon, setIcon] = useState('');
+	const [icon, setIcon] = useState("");
 	const [isLoaded, setIsLoaded] = useState(false);
+	SetDayWeather(props.dailyWeather);
 
-	useEffect(() => {
-		// dayData();
-	}, [props.dailyWeather])
-	console.log(props.dailyWeather);
+	// useEffect(() => {
+	// 	dayData();
+	// }, [props.dailyWeather]);
+	console.log(dayWeather);
 	const dayData = () => {
 		const data = [];
-		for (let i = 0; i < props.dailyWeather.length; i+8) {
-			data.push(props.dailyWeather[i]);			
+		for (let i = 0; i < dayWeather.length; i + 8) {
+			data.push(dayWeather[i]);
 		}
 		return data;
-	}	
-	// console.log(dayData());
+	};
+	console.log(dayData());
 
 	const styles = {
 		height: "30%",
@@ -26,13 +27,13 @@ const DailyForecast = (props) => {
 		display: "flex",
 		justifyContent: "space-around",
 		backgroundColor: "#bdc3c7",
+		borderRadius: "15px",
 	};
-
 
 	return (
 		<div style={styles}>
-			{isLoaded ? (
-				<>
+			{/* {isLoaded ? (
+				<> */}
 			<DayStyle>
 				Mon
 				<DayIcon src="http://openweathermap.org/img/wn/10d@2x.png" alt="" />
@@ -57,10 +58,10 @@ const DailyForecast = (props) => {
 				Fri
 				<DayIcon src="http://openweathermap.org/img/wn/10d@2x.png" alt="" />
 				75
-					</DayStyle>
-					</>
+			</DayStyle>
+			{/* </>
 			) : (
-				<div>hi</div>)}
+				<div>hi</div>)} */}
 		</div>
 	);
 };
