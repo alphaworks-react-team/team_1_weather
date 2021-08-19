@@ -5,7 +5,7 @@ export const DayStyle = styled.div`
 	width: 18%;
 	display: flex;
 	flex-direction: column;
-	align-Items: center;
+	align-items: center;
 	justify-content: space-around;
 	/* background: rgba(155, 155, 155, 0.25); */
 	box-shadow: 0 8px 32px 0 rgba(3, 3, 135, 0.2);
