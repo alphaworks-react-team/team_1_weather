@@ -7,6 +7,7 @@ import SoftBox from "./Components/SoftBox/SoftBox";
 import styled from "styled-components";
 import DailyForecast from "./Components/DailyForecast/DailyForecast";
 import Search from "./Components/Search/Search";
+import CurrentWeather from "./Components/CurrentWeather/CurrentWeather";
 import TimeDay from "./Components/Time/TimeDay";
 import HistoryContainer from "./Components/History/History";
 import {
@@ -105,7 +106,9 @@ function App() {
         </Body>
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
-          <div style={{ border: "1px solid black", height: "50%" }}></div>
+		      <CurrentWeather 
+          location={currentLocationWeather.name}
+          />
           <HistoryContainer />
         </SideBar>
       </Main>
