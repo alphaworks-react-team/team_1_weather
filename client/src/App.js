@@ -106,7 +106,7 @@ function App() {
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
           <div style={{ border: "1px solid black", height: "50%" }}></div>
-          <HistoryContainer />
+          <HistoryContainer history={history} />
         </SideBar>
       </Main>
     </div>
