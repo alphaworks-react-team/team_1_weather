@@ -3,12 +3,10 @@ import { DayStyle, DayIcon } from "./DayStyle";
 
 const DailyForecast = (props) => {
 	const [dayWeather, setDayWeather] = useState([]);
-	// const [newDay, setNewDay] = useState([]);
-	// const [icon, setIcon] = useState("");
 
 	useEffect(() => {
 		dayData();
-	}, []);
+	}, [props.dailyWeather]);
 
 	const dayData = () => {
 		const dataArr = [];
@@ -30,14 +28,14 @@ const DailyForecast = (props) => {
 
 	return (
 		<div style={styles}>
-			{dayWeather.map((item) => (
-				<DayStyle>
+			{dayWeather.map((item,index) => (
+				<DayStyle key={index}>
 					Mon
 					<DayIcon
 						src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
 						alt=""
 					/>
-					75
+					{item.main.temp}
 				</DayStyle>
 			))}
 		</div>
