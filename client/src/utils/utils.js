@@ -35,6 +35,7 @@ export const dailyWeatherData = async (city = "maryland") => {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${API_key}`
       );
       resolve(request);
+      console.log(request);
     } catch (err) {
       reject(err);
     }
