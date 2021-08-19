@@ -96,8 +96,10 @@ function App() {
         </Body>
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
-          <CurrentWeather location={currentLocationWeather&&currentLocationWeather.name} />
-          <HistoryContainer />
+          <CurrentWeather
+            location={currentLocationWeather && currentLocationWeather.name}
+          />
+          <HistoryContainer history={history} />
         </SideBar>
       </Main>
     </div>
