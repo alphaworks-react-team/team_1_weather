@@ -23,17 +23,17 @@ import nightHaze from '../../assets/22.png'
 const Icons = (props) => {
     const returnIcon = () => {
         switch (props.description) {
-            case "sunny":
+            case "clear sky" || "sunny":
                 return sunny
             case "thunder":
-                return thunderstorm
-                
+                return dayTStorm
+
             default:
                 break;
         }
     }
     return (
-        <img style = {props.style} src={returnIcon()} alt="broken image"/>
+        <img src={returnIcon()} alt="broken image"/>
     )
 }
 
