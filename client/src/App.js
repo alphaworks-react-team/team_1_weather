@@ -15,28 +15,29 @@ import {
 } from "./utils/utils";
 
 function App() {
-  // const [latitude, setLatitude] = useState();
-  // const [longitude, setLongitude] = useState();
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
   const [forcast, setForcast] = useState([]);
-  const [currentWeather, setCurrentWeather] = useState();
+  const [currentWeather, setCurrentWeather] = useState({});
   const [dailyWeather, setDailyWeather] = useState();
   const [currentLocationWeather, setCurrentLocationWeather] = useState();
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  // const successful = (position) => {
-  //   // console.log(position);
-  //   setLatitude(position.coords.latitude);
-  //   setLongitude(position.coords.longitude);
-  // };
+  const successful = (position) => {
+    // console.log(position.coords);
+    setLatitude(position.coords.latitude);
+    setLongitude(position.coords.longitude);
+  };
 
-  // const error = (err) => {
-  //   console.log("error:", err);
-  // };
+  const error = (err) => {
+    console.log(err);
+  };
 
-  // var options = {
-  //   enableHighAccuracy: true,
-  //   timeout: 5000,
-  //   maximumAge: 0,
-  // };
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
 
   useEffect(() => {
     // currentWeatherData().then(({ data }) => console.log("data", data));
@@ -77,6 +78,7 @@ function App() {
     setCurrentWeather(weather.data);
     setDailyWeather(dailyWeather.data);
     // setCurrentLocationWeather(null);
+    setIsLoaded(true);
   };
 
   return (
@@ -96,7 +98,7 @@ function App() {
             <SoftBox height={"20%"}></SoftBox>
             <SoftBox height={"20%"}></SoftBox>
           </SoftBox>
-          <DailyForecast />
+          {isLoaded && <DailyForecast dailyWeather={dailyWeather.list} />}
         </Body>
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
