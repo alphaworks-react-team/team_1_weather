@@ -27,6 +27,7 @@ const Icons = (props) => {
                 return sunny
             case "thunder":
                 return thunderstorm
+                
             default:
                 break;
         }

@@ -88,7 +88,9 @@ function App() {
         </Body>
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
-		      <CurrentWeather />
+		      <CurrentWeather 
+          location={currentLocationWeather.name}
+          />
         </SideBar>
       </Main>
     </div>

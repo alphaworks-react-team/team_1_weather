@@ -1,23 +1,7 @@
 import styled from 'styled-components'
 import React from 'react'
-import Icons from "../Icons/Icons"
+// import Icons from "../Icons/Icons"
 
-
-
-const CurrentWeather = (props) => {
-    const styles = {
-        width: "30px",
-        height: "30px"
-    }
-    return (
-        <Current>   
-            <Icons style={styles} type = "sunny"/>
-        </Current>
-    )
-}
-
-
- 
 
 const Current = styled.div`
     display: flex;
@@ -30,6 +14,38 @@ const Current = styled.div`
     background-color: smokey-white;
     filter: blur(2px);
 `;
+
+const CurrentWeather = (props) => {
+    const styles = {
+        width: "80px",
+        height: "80px"
+    }
+    return (
+        <Current>
+            <div>
+                {props.location}
+            </div>
+           <div>   
+                {/* <Icons style={styles} type = "sunny"/> */}
+            </div> 
+            <div>
+                {props.date}
+            </div>
+            <div>
+                {props.temp}
+            </div>
+            <div>
+                {props.description}
+            </div>
+            <div>
+                {props.wind}
+            </div>
+            <div>
+                {props.humidity}
+            </div>
+        </Current>
+    )
+}
 
 
 export default CurrentWeather
