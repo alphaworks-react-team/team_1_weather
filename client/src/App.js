@@ -3,10 +3,9 @@ import "./App.css";
 import Main from "./Components/Main/MainGlass";
 import Body from "./Components/Body/Body";
 import SideBar from "./Components/SideBar/SideBar";
-import SoftBox from "./Components/SoftBox/SoftBox";
-import styled from "styled-components";
 import DailyForecast from "./Components/DailyForecast/DailyForecast";
 import Search from "./Components/Search/Search";
+import CurrentWeather from "./Components/CurrentWeather/CurrentWeather";
 import TimeDay from "./Components/Time/TimeDay";
 import HistoryContainer from "./Components/History/History";
 import {
@@ -14,11 +13,11 @@ import {
   dailyWeatherData,
   getCurrentLocationWeather,
 } from "./utils/utils";
-
+import HourlyData from "./Components/HourlyData/HourlyData";
 function App() {
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
-  const [forcast, setForcast] = useState([]);
+  // const [forecast, setforecast] = useState([]);
   const [currentWeather, setCurrentWeather] = useState({});
   const [dailyWeather, setDailyWeather] = useState();
   const [currentLocationWeather, setCurrentLocationWeather] = useState();
@@ -41,24 +40,24 @@ function App() {
     maximumAge: 0,
   };
 
-  useEffect(() => {
-    // currentWeatherData().then(({ data }) => console.log("data", data));
-    dailyWeatherData().then(({ data }) =>
-      setForcast([...data.list.splice(0, 4)])
-    );
+  // useEffect(() => {
 
-    // navigator.geolocation.getCurrentPosition(successful, error, options);
+  //   dailyWeatherData().then(({ data }) =>
+  //     setforecast([...data.list.splice(0, 4)])
+  //   );
 
-    // async function fetchData() {
-    //   await getCurrentLocationWeather(latitude, longitude).then(({ data }) =>
-    //     // console.log(data)
-    //     setCurrentLocationWeather(data)
-    //   );
-    // }
+  // navigator.geolocation.getCurrentPosition(successful, error, options);
 
-    // fetchData();
-    // console.log(latitude, longitude);
-  }, []);
+  // async function fetchData() {
+  //   await getCurrentLocationWeather(latitude, longitude).then(({ data }) =>
+  //     // console.log(data)
+  //     setCurrentLocationWeather(data)
+  //   );
+  // }
+
+  // fetchData();
+  // console.log(latitude, longitude);
+  // }, []);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(async (data) => {
@@ -91,21 +90,13 @@ function App() {
           <TimeDay
             weather={currentWeather ? currentWeather : currentLocationWeather}
           />
-          <SoftBox height={"50%"}>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-            <SoftBox height={"20%"}>{dailyWeatherData}</SoftBox>
-          </SoftBox>
+          <HourlyData />
+
           {isLoaded && <DailyForecast dailyWeather={dailyWeather.list} />}
         </Body>
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
-          <div style={{ border: "1px solid black", height: "50%" }}></div>
+          <CurrentWeather location={currentLocationWeather&&currentLocationWeather.name} />
           <HistoryContainer />
         </SideBar>
       </Main>

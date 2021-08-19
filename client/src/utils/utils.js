@@ -15,6 +15,19 @@ export const currentWeatherData = (city = "maryland") => {
   });
 };
 
+// export const todaysWeather = async (city = "San Francisco") => {
+//   return new Promise(async(resolve, reject) => {
+//     try {
+//       const request = await axios.get(
+//         `api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_key}`
+//       );
+//       resolve(request)
+//     } catch (error) {
+//       reject(erro);
+//     }
+//   });
+// };
+
 export const dailyWeatherData = async (city = "maryland") => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -22,6 +35,7 @@ export const dailyWeatherData = async (city = "maryland") => {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${API_key}`
       );
       resolve(request);
+      console.log(request);
     } catch (err) {
       reject(err);
     }
