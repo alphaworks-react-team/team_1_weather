@@ -9,11 +9,11 @@ const DateTimeContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const DateHeading = styled.h1`
+const TimeHeading = styled.h1`
   margin: 0px;
 `;
 
-const TimeBody = styled.h3`
+const DateBody = styled.h3`
   margin: 0px;
 `;
 
@@ -29,13 +29,19 @@ const TimeDay = ({ weather }) => {
   const currentDay = currentDate.toLocaleString("en-US", options);
   const searchedWeather = weather ? weather : currentTime;
   const searchedTime = searchedWeather.dt;
+  const convertTime = new Date(searchedTime * 1000);
+  let hours = convertTime.getHours();
+  let minutes = "0" + convertTime.getMinutes();
+  let seconds = "0" + convertTime.getSeconds();
+  // const formattedTime = `${hours}:${minutes.substr(-2)}:${seconds.substr(-2)}`;
+  const formattedTime = convertTime.toLocaleString("JP");
   console.log(weather);
-  console.log(searchedTime);
+  console.log(formattedTime);
 
   return (
     <DateTimeContainer>
-      <DateHeading>{currentTime}</DateHeading>
-      <TimeBody>{currentDay}</TimeBody>
+      <TimeHeading>{formattedTime ? formattedTime : currentTime}</TimeHeading>
+      <DateBody>{currentDay}</DateBody>
     </DateTimeContainer>
   );
 };

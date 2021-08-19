@@ -8,6 +8,7 @@ import styled from "styled-components";
 import DailyForecast from "./Components/DailyForecast/DailyForecast";
 import Search from "./Components/Search/Search";
 import TimeDay from "./Components/Time/TimeDay";
+import HistoryContainer from "./Components/History/History";
 import {
   currentWeatherData,
   dailyWeatherData,
@@ -21,6 +22,7 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [dailyWeather, setDailyWeather] = useState();
   const [currentLocationWeather, setCurrentLocationWeather] = useState();
+  const [history, setHistory] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const successful = (position) => {
@@ -77,6 +79,7 @@ function App() {
     // console.log("daily weather:", dailyWeather);
     setCurrentWeather(weather.data);
     setDailyWeather(dailyWeather.data);
+    setHistory([...history, weather.data]);
     // setCurrentLocationWeather(null);
     setIsLoaded(true);
   };
@@ -102,6 +105,8 @@ function App() {
         </Body>
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
+          <div style={{ border: "1px solid black", height: "50%" }}></div>
+          <HistoryContainer />
         </SideBar>
       </Main>
     </div>
