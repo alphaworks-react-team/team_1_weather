@@ -19,8 +19,16 @@ export const DayStyle = styled.div`
 `;
 
 export const DayIcon = styled.img.attrs((props) => ({
-  src: props.src,
-  alt: props.alt,
+	src: props.src,
+	alt: props.alt,
 }))`
-  height: auto;
+	height: auto;
+`;
+
+export const TextData = styled.h5`
+	margin: 0;
+	color: ${(props) => props.color};
+	font-size: ${(props) => props.size};
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 700;
 `;

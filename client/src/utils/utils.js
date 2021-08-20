@@ -54,3 +54,15 @@ export const getCurrentLocationWeather = async (lat, lon) => {
     }
   });
 };
+ 
+
+// export const chooseVideo = (video) => {
+//   switch (video) {
+//     case 'Rain':
+//       return "rain"
+//     case 'Clouds':
+//       return "clouds"
+//     case 'Clear':
+//       return "clear"
+//   }
+// }
