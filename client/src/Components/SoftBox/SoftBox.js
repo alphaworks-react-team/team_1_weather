@@ -10,7 +10,7 @@ const SoftBox = styled.div`
   align-content: center;
   height: ${(props) => (props.height ? props.height : null)};
   border-radius: 50px;
-  background: #e0e0e0;
+  // background: #e0e0e0;
 `;
 
 export default SoftBox;
