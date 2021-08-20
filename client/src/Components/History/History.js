@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const HistoryContainer = styled.div`
   height: 40%;
-  width: 100%;
+  width: 85%;
   padding: 0px 10px 0px 10px;
   display: flex;
   flex-flow: column wrap;
