@@ -54,9 +54,9 @@ const Search = (props) => {
         type="text"
       />
 
-      <SearchButton type="submit">
+      {/* <SearchButton type="submit">
         <p style={styles}>X</p>
-      </SearchButton>
+      </SearchButton> */}
     </SearchForm>
   );
 };

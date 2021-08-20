@@ -1,9 +1,10 @@
 import SoftBox from "../SoftBox/SoftBox";
 import { dailyWeatherData } from "../../utils/utils";
 import { useEffect, useState } from "react";
+import { RiContrastDropLine } from "react-icons/ri";
 
-function HourlyData() {
-  const [forecast, setforecast] = useState([]);
+function HourlyData(props) {
+  const [forecast, setForecast] = useState();
 
   const styles = {
     margin: "0px",
@@ -25,9 +26,13 @@ function HourlyData() {
   };
 
   useEffect(() => {
-    dailyWeatherData().then(({ data }) =>
-      setforecast([...data.list.splice(0, 8)])
-    );
+    const dailyForecast = props.dailyWeather;
+
+    setForecast(props?.dailyWeather);
+
+    // dailyWeatherData().then(({ data }) =>
+    //   setForecast([...data.list.splice(0, 8)])
+    // );
   }, []);
 
   // const divStyles = {
@@ -36,13 +41,14 @@ function HourlyData() {
   // };
   return (
     <SoftBox height={"50%"}>
-      {forecast.map((element, index) => (
-        <div style={styles} key={index}>
-          <p>{unixTime(element.dt)}</p>
-          <p>{element.weather[0].description}</p>
-          <p>{Math.round(element.main.temp)}°F</p>
-        </div>
-      ))}
+      {props.dailyWeather.list &&
+        props.dailyWeather.list.splice(0, 8).map((element, index) => (
+          <div style={styles} key={index}>
+            <p>{unixTime(element.dt)}</p>
+            <p>{element.weather[0].description}</p>
+            <p>{Math.round(element.main.temp)}°F</p>
+          </div>
+        ))}
     </SoftBox>
   );
 }
