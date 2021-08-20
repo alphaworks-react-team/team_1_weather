@@ -21,11 +21,11 @@ const SearchButton = styled.button`
 
 const SearchForm = styled.form`
   height: 10%;
-  width: ;
+  width: 85%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0px 10px 0px 10px;
+  margin: 10px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -42,7 +42,7 @@ const Search = (props) => {
   const [value, setValue] = useState("");
 
   const onChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setValue(e.target.value);
   };
 

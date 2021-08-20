@@ -26,9 +26,9 @@ function HourlyData(props) {
   };
 
   useEffect(() => {
-    const dailyForecast = props.dailyWeather;
+    const dailyForecast = props.dailyWeather && props.dailyWeather.list;
 
-    setForecast(props?.dailyWeather);
+    setForecast(dailyForecast);
 
     // dailyWeatherData().then(({ data }) =>
     //   setForecast([...data.list.splice(0, 8)])
@@ -39,16 +39,33 @@ function HourlyData(props) {
   //   width: "40%",
   //   border: "1px solid black",
   // };
+
+  const return8 = (arr) => {
+    const newArr = [];
+
+    for (let i = 0; i <= 7; i++) {
+      newArr.push(
+        <div style={styles} key={i}>
+          <p>{unixTime(arr[i].dt)}</p>
+          <p>{arr[i].weather[0].description}</p>
+          <p>{Math.round(arr[i].main.temp)}°F</p>
+        </div>
+      );
+    }
+
+    return newArr;
+  };
   return (
     <SoftBox height={"50%"}>
-      {props.dailyWeather.list &&
+      {props.dailyWeather && return8(props.dailyWeather.list)}
+      {/* {props.dailyWeather &&
         props.dailyWeather.list.splice(0, 8).map((element, index) => (
           <div style={styles} key={index}>
             <p>{unixTime(element.dt)}</p>
             <p>{element.weather[0].description}</p>
             <p>{Math.round(element.main.temp)}°F</p>
           </div>
-        ))}
+        ))} */}
     </SoftBox>
   );
 }
