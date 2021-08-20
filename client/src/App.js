@@ -79,7 +79,17 @@ function App() {
     // console.log("daily weather:", dailyWeather);
     setCurrentWeather(weather.data);
     setDailyWeather(dailyWeather.data);
-    setHistory([...history, weather.data]);
+
+    console.log("show me", history);
+
+    const updatedHistory = [...history, weather.data];
+
+    if (updatedHistory.length > 2) {
+      updatedHistory.shift();
+    }
+
+    console.log("SEE MEEEEEE", updatedHistory.length);
+    setHistory(updatedHistory);
     // setCurrentLocationWeather(null);
     setIsLoaded(true);
   };

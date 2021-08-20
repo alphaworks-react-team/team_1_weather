@@ -53,9 +53,9 @@ const History = (props) => {
 
   const keepAt2 = () => {
     const dataArray = [...searchedHistory];
-    if (dataArray.length > 1) {
-      console.log("popped", dataArray);
+    if (dataArray.length > 2) {
       dataArray.shift();
+      console.log("popped", dataArray);
       setSearchedHistory(dataArray);
     }
   };
