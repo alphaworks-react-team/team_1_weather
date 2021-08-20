@@ -1,5 +1,5 @@
 import axios from "axios";
-import clear from "../assets/video/Scattered Clouds.mp4";
+import clear from "../assets/video/ScatteredClouds.mp4";
 import rain from "../assets/video/rain.mp4";
 import snow from "../assets/video/Snow.mp4";
 const API_key = process.env.REACT_APP_WEATHER_API_KEY;
@@ -60,11 +60,11 @@ export const getCurrentLocationWeather = async (lat, lon) => {
 
 export const chooseVideo = (video) => {
   switch (video) {
-    case 'Rain':
-      return rain
-    // case 'Clouds':
-    //   return clouds
-    case 'Clear':
-      return clear
-  }
+		case "Rain":
+			return rain;
+		case "Clouds":
+			return snow;
+		case "Clear":
+			return clear;
+	}
 }
