@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import React from 'react'
 import Icons from "../Icons/Icons"
-import windy from '../../assets/23.png'
-import { TiWeatherWindy } from 'react-icons/ti'
+import { RiWindyFill } from 'react-icons/ri'
+import { WiHumidity } from 'react-icons/wi'
 
 
 const CurrentWeather = (props) => {
@@ -14,8 +14,10 @@ const CurrentWeather = (props) => {
             width: "85%",
             height: "50%",
             borderRadius: "15px",
-            border: "2px solid rgb(101, 153, 254)",
-            backgroundColor: "rgb(152, 187, 255)"
+            border: "3px solid rgb(179, 204, 255)",
+            backgroundColor: "rgba(152, 187, 255, .4)",
+            boxShadow: "8px 8px 12px rgba(101, 153, 254, .6), -8px -8px -12px 0 rgb(152, 187, 255)",
+            background: "blur(12px)"
         },
         icons: {
             display: "flex",
@@ -28,16 +30,30 @@ const CurrentWeather = (props) => {
         location: {
             display: "flex",
             justifyContent: "flex-start",
-            marginLeft: "5px"
+            marginLeft: "5px",
+            color: "rgb(51, 119, 255)",
+            fontSize: "30px"
         },
         temp: {
             display: "flex",
+            color: "rgb(51, 119, 255)",
             justifyContent: "center"
         },
         description: {
             display: "flex",
+            color: "rgb(51, 119, 255)",
             justifyContent: "center"
-        }
+        },
+        wind: {
+            display: "flex",
+            color: "rgb(51, 119, 255)",
+            justifyContent: "space-evenly"
+        },
+        hum: {
+            display: "flex",
+            color: "rgb(51, 119, 255)",
+            justifyContent: "space-evenly"
+        },
     }
     return (
         <div style={styles.current}>
@@ -53,15 +69,21 @@ const CurrentWeather = (props) => {
             <div style={styles.description}>
                 {props.description}
             </div>
-            <div>
+            <div style={styles.wind}>
                 <div>
-                    <TiWeatherWindy />
-                    <img style={{width: "30px", height: "30px"}}src={windy} />wind
-                     {/* {props.wind} */}
+                    <RiWindyFill /> Wind
                 </div> 
+                <div>
+                    {props.wind}
+                </div>
             </div>
-            <div>
-                Hum: {props.humidity}
+            <div style={styles.hum}>
+                <div>
+                    <WiHumidity/> Humid
+                </div>
+                <div>
+                    {props.humidity}
+                </div>
             </div>
         </div>
     )
