@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import React from 'react'
-import Icons from "../Icons/Icons"
+import Icons from "../Icons/Icons.js"
 import { RiWindyFill } from 'react-icons/ri'
 import { WiHumidity } from 'react-icons/wi'
+import { GoLocation } from 'react-icons/go'
 
 
 const CurrentWeather = (props) => {
@@ -30,9 +31,10 @@ const CurrentWeather = (props) => {
         location: {
             display: "flex",
             justifyContent: "flex-start",
-            marginLeft: "5px",
+            marginLeft: "10px",
             color: "rgb(51, 119, 255)",
-            fontSize: "30px"
+            fontSize: "25px",
+            fontWeight: "800"
         },
         temp: {
             display: "flex",
@@ -47,18 +49,18 @@ const CurrentWeather = (props) => {
         wind: {
             display: "flex",
             color: "rgb(51, 119, 255)",
-            justifyContent: "space-evenly"
+            justifyContent: "space-around"
         },
         hum: {
             display: "flex",
             color: "rgb(51, 119, 255)",
-            justifyContent: "space-evenly"
+            justifyContent: "space-around"
         },
     }
     return (
         <div style={styles.current}>
             <div style={styles.location}>
-                {props.location}
+            <GoLocation /> {props.location}
             </div>
            <div style={styles.icons}>   
                 <Icons description={props.description}/>
