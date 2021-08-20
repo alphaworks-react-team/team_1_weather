@@ -6,7 +6,6 @@ const Body = (props) => {
 const MainBody = styled.div`
   width: 60%;
   height: 100%;
-  border: 2px solid green;
 `;
 
 export default Body;

@@ -33,14 +33,14 @@ const TimeDay = ({ weather }) => {
   let hours = convertTime.getHours();
   let minutes = "0" + convertTime.getMinutes();
   let seconds = "0" + convertTime.getSeconds();
-  // const formattedTime = `${hours}:${minutes.substr(-2)}:${seconds.substr(-2)}`;
-  const formattedTime = convertTime.toLocaleString("JP");
+  const formattedTime = `${hours}:${minutes.substr(-2)}:${seconds.substr(-2)}`;
+  // const formattedTime = convertTime.toLocaleString("JP");
   console.log(weather);
   console.log(formattedTime);
 
   return (
     <DateTimeContainer>
-      <TimeHeading>{formattedTime ? formattedTime : currentTime}</TimeHeading>
+      <TimeHeading>{currentTime}</TimeHeading>
       <DateBody>{currentDay}</DateBody>
     </DateTimeContainer>
   );

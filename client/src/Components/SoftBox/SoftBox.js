@@ -5,12 +5,12 @@ import { dailyWeatherData } from "../../utils/utils";
 const SoftBox = styled.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   height: ${(props) => (props.height ? props.height : null)};
   border-radius: 50px;
-  background: #e0e0e0;
-  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  // background: #e0e0e0;
 `;
 
 export default SoftBox;

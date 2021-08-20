@@ -11,6 +11,5 @@ const Aside = styled.div`
   align-items: center;
   width: 40%;
   height: 100%;
-  border: 2px solid gray;
 `;
 export default SideBar;
