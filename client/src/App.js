@@ -74,7 +74,7 @@ function App() {
 
   const SearchSubmit = async (e, value) => {
     e.preventDefault();
-    console.log(value);
+    // console.log(value);
     const weather = await currentWeatherData(value);
     const dailyWeather = await dailyWeatherData(value);
     // console.log("current weather:", weather);
@@ -82,7 +82,7 @@ function App() {
     setCurrentWeather(weather.data);
     setDailyWeather(dailyWeather.data);
 
-    console.log("show me", history);
+    // console.log("show me", history);
 
     const updatedHistory = [...history, weather.data];
 
@@ -90,7 +90,7 @@ function App() {
       updatedHistory.shift();
     }
 
-    console.log("SEE MEEEEEE", updatedHistory.length);
+    // console.log("SEE MEEEEEE", updatedHistory.length);
     setHistory(updatedHistory);
     // setCurrentLocationWeather(null);
     setIsLoaded(true);
@@ -104,6 +104,7 @@ function App() {
           <HourlyData dailyWeather={dailyWeather} />
 
           {isLoaded && <DailyForecast dailyWeather={dailyWeather.list} />}
+          {/* <DailyForecast dailyWeather={dailyWeather && dailyWeather.list} /> */}
         </Body>
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
