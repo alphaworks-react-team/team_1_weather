@@ -3,22 +3,28 @@ import styled from "styled-components";
 
 const HistoryContainer = styled.div`
   height: 40%;
+  width: 100%;
   padding: 0px 10px 0px 10px;
   display: flex;
   flex-flow: column wrap;
   justify-content: space-around;
   align-items: center;
-  background-color: grey;
+  // background-color: grey;
 `;
 
 const HistoryCard = styled.div`
+  padding: 5px;
   height: 40%;
   width: 100%;
-  border: 1px solid black;
   display: flex;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 `;
 
-const HistoryCardHeader = styled.h1`
+const HistoryCardHeader = styled.h2`
   margin: 0;
 `;
 

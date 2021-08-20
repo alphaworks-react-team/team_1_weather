@@ -10,8 +10,12 @@ function HourlyData() {
     width: "25%",
     textAlign: "center",
     borderRadius: "50px",
-    background: "#e0e0e0",
-    boxShadow: "20px 20px 60px #bebebe",
+    // background: "#e0e0e0",
+    // boxShadow: "20px 20px 60px #bebebe",
+    boxShadow: "0 8px 32px 0 rgba(3, 3, 135, 0.2)",
+    backdropFilter: " blur(4px)",
+    // -webkit-backdrop-filter: blur(4px);
+    borderRadius: "10px",
   };
 
   const unixTime = (sec) => {
