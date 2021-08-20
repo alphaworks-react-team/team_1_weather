@@ -19,6 +19,7 @@ import nightSnow from "../../assets/46.png";
 import nightHaze from "../../assets/22.png";
 
 const Icons = (props) => {
+<<<<<<< HEAD
   const returnIcon = () => {
     switch (props.description) {
       case "clear sky" || "sunny":
@@ -57,6 +58,47 @@ const Icons = (props) => {
         return nightSnow;
       case "haze" || ("hazey" && "night"):
         return nightHaze;
+=======
+    const returnIcon = () => {
+        switch (props.description) {
+            case "clear sky" || "sunny":
+                return sunny
+            case "thunder":
+                return dayTStorm
+            case "wind >== 8":
+                return windy
+            case "sunny" || "hot":
+                return hot
+            case "overcast clouds":
+                return cloudyDay
+            case "broken clouds" || "few clouds":
+                return partlyCloudyDay
+            case "light rain" || "moderate rain":
+                return lightRain
+            case "light snow" || "moderate snow":
+                return lightSnow
+            case "haze" || "hazey":
+                return lightHaze
+            case "heavy rain":
+                return dayHeavyRain
+            case "sunny" && "snow":
+                return daySnow
+            case "clear sky" && "night":
+                return clearNight
+            case "cloudy" && "night":
+                return cloudyNight
+            case "partly cloudly" || "broken clouds" && "night":
+                return partlyCloudyNight
+            case "thunder storm" && "night":
+                return nightTStorm
+            case "heavy rain" && "night":
+                return nightHeavyRain
+            case "snow" && "snow":
+                return nightSnow
+            case "haze" || "hazey" && "night":
+                return nightHaze
+        }
+>>>>>>> bdc7741185030a23d36fbb70ed66895b45414353
     }
   };
 
