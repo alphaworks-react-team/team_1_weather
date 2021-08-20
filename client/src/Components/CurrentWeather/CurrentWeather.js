@@ -13,12 +13,12 @@ const CurrentWeather = (props) => {
             flexDirection: "column",
             justifyContent: "space-around",
             width: "85%",
-            height: "50%",
+            height: "60%",
             borderRadius: "15px",
-            border: "3px solid rgb(179, 204, 255)",
-            backgroundColor: "rgba(152, 187, 255, .4)",
-            boxShadow: "8px 8px 12px rgba(101, 153, 254, .6), -8px -8px -12px 0 rgb(152, 187, 255)",
-            background: "blur(12px)"
+            border: "1px solid rgb(79,171,77)",
+            backgroundColor: "rgba(101,223,82, .2)",
+            boxShadow: "6px 6px 8px rgba(79,171,77, .6)",
+            backdropFilter: "blur(8px)",
         },
         icons: {
             display: "flex",
@@ -39,22 +39,27 @@ const CurrentWeather = (props) => {
         temp: {
             display: "flex",
             color: "rgb(51, 119, 255)",
-            justifyContent: "center"
+            justifyContent: "center",
+            fontSize: "20px",
+            fontWeight: "700"
         },
         description: {
             display: "flex",
             color: "rgb(51, 119, 255)",
-            justifyContent: "center"
+            justifyContent: "center",
+            fontWeight: "700"
         },
         wind: {
             display: "flex",
             color: "rgb(51, 119, 255)",
-            justifyContent: "space-around"
+            justifyContent: "space-around",
+            fontWeight: "700"
         },
         hum: {
             display: "flex",
             color: "rgb(51, 119, 255)",
-            justifyContent: "space-around"
+            justifyContent: "space-around",
+            fontWeight: "700"
         },
     }
     return (
