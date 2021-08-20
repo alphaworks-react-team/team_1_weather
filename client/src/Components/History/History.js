@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const HistoryContainer = styled.div`
   height: 40%;
-  width: 100%;
-  padding: 0px 10px 0px 10px;
+  width: 85%;
+  margin: 10px;
   display: flex;
   flex-flow: column wrap;
   justify-content: space-around;
@@ -13,7 +13,7 @@ const HistoryContainer = styled.div`
 `;
 
 const HistoryCard = styled.div`
-  padding: 5px;
+  // padding: 5px;
   height: 40%;
   width: 100%;
   display: flex;
@@ -36,7 +36,7 @@ const HistoryIcon = styled.img.attrs((props) => ({
   src: props.src,
   alt: props.alt,
 }))`
-  height: auto;
+  height: 75%;
 `;
 
 const HistoryDescription = styled.h6`
@@ -53,9 +53,9 @@ const History = (props) => {
 
   const keepAt2 = () => {
     const dataArray = [...searchedHistory];
-    if (dataArray.length > 1) {
-      console.log("popped", dataArray);
+    if (dataArray.length > 2) {
       dataArray.shift();
+      console.log("popped", dataArray);
       setSearchedHistory(dataArray);
     }
   };

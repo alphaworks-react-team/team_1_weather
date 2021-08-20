@@ -60,7 +60,9 @@ const Icons = (props) => {
         }
     }
 
-  return <img src={returnIcon()} alt="broken image" />;
+    return <img src={returnIcon()} alt="broken image" />;
 };
+
+  
 
 export default Icons;

@@ -35,8 +35,8 @@ const TimeDay = ({ weather }) => {
   let seconds = "0" + convertTime.getSeconds();
   const formattedTime = `${hours}:${minutes.substr(-2)}:${seconds.substr(-2)}`;
   // const formattedTime = convertTime.toLocaleString("JP");
-  console.log(weather);
-  console.log(formattedTime);
+  // console.log(weather);
+  // console.log(formattedTime);
 
   return (
     <DateTimeContainer>

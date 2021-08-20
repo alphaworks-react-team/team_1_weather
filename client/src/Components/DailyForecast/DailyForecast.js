@@ -20,10 +20,10 @@ const DailyForecast = (props) => {
     let day = new Date(time * 1000).toLocaleTimeString("en-US", {
       weekday: "short",
     });
-    console.log(day);
+    // console.log(day);
     return day.substring(0, 3);
   };
-  console.log(days(1629406800));
+  // console.log(days(1629406800));
   const styles = {
     height: "30%",
     width: "100%",

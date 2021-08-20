@@ -92,9 +92,8 @@ const CurrentWeather = (props) => {
                     {props.humidity}
                 </div>
             </div>
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-
-export default CurrentWeather
+export default CurrentWeather;

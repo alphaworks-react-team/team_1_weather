@@ -16,30 +16,30 @@ import HourlyData from "./Components/HourlyData/HourlyData";
 import CurrentWeather from "./Components/CurrentWeather/CurrentWeather";
 
 function App() {
-  const [latitude, setLatitude] = useState();
-  const [longitude, setLongitude] = useState();
+  // const [latitude, setLatitude] = useState();
+  // const [longitude, setLongitude] = useState();
   // const [forecast, setforecast] = useState([]);
-  const [currentWeather, setCurrentWeather] = useState({});
+  const [currentWeather, setCurrentWeather] = useState();
   const [dailyWeather, setDailyWeather] = useState();
-  const [currentLocationWeather, setCurrentLocationWeather] = useState();
+  // const [currentLocationWeather, setCurrentLocationWeather] = useState();
   const [history, setHistory] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const successful = (position) => {
-    // console.log(position.coords);
-    setLatitude(position.coords.latitude);
-    setLongitude(position.coords.longitude);
-  };
+  // const successful = (position) => {
+  //   // console.log(position.coords);
+  //   setLatitude(position.coords.latitude);
+  //   setLongitude(position.coords.longitude);
+  // };
 
-  const error = (err) => {
-    console.log(err);
-  };
+  // const error = (err) => {
+  //   console.log(err);
+  // };
 
-  var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0,
-  };
+  // var options = {
+  //   enableHighAccuracy: true,
+  //   timeout: 5000,
+  //   maximumAge: 0,
+  // };
 
   // useEffect(() => {
 
@@ -65,21 +65,33 @@ function App() {
       const lat = data.coords.latitude;
       const lon = data.coords.longitude;
       const weather = await getCurrentLocationWeather(lat, lon);
-      setCurrentLocationWeather(weather.data);
+      const dailyWeather = await dailyWeatherData(weather.name);
+      setCurrentWeather(weather.data);
+      setDailyWeather(dailyWeather.data);
       // console.log("location weather:", weather.data);
     });
   }, []);
 
   const SearchSubmit = async (e, value) => {
     e.preventDefault();
-    console.log(value);
+    // console.log(value);
     const weather = await currentWeatherData(value);
     const dailyWeather = await dailyWeatherData(value);
     // console.log("current weather:", weather);
     // console.log("daily weather:", dailyWeather);
     setCurrentWeather(weather.data);
     setDailyWeather(dailyWeather.data);
-    setHistory([...history, weather.data]);
+
+    // console.log("show me", history);
+
+    const updatedHistory = [...history, weather.data];
+
+    if (updatedHistory.length > 2) {
+      updatedHistory.shift();
+    }
+
+    // console.log("SEE MEEEEEE", updatedHistory.length);
+    setHistory(updatedHistory);
     // setCurrentLocationWeather(null);
     setIsLoaded(true);
   };
@@ -88,27 +100,23 @@ function App() {
     <div className="App">
       <Main>
         <Body>
-          <TimeDay
-            weather={currentWeather ? currentWeather : currentLocationWeather}
-          />
-          <HourlyData />
+          <TimeDay weather={currentWeather} />
+          <HourlyData dailyWeather={dailyWeather} />
 
           {isLoaded && <DailyForecast dailyWeather={dailyWeather.list} />}
+          {/* <DailyForecast dailyWeather={dailyWeather && dailyWeather.list} /> */}
         </Body>
         <SideBar>
           <Search SearchSubmit={SearchSubmit} />
           <CurrentWeather
-            location={currentLocationWeather && currentLocationWeather.name}
-            date={currentLocationWeather && currentLocationWeather.dt}
-            temp={currentLocationWeather && currentLocationWeather.main.temp}
+            location={currentWeather && currentWeather.name}
+            date={currentWeather && currentWeather.dt}
+            temp={currentWeather && currentWeather.main.temp}
             description={
-              currentLocationWeather &&
-              currentLocationWeather.weather[0].description
+              currentWeather && currentWeather.weather[0].description
             }
-            wind={currentLocationWeather && currentLocationWeather.wind.speed}
-            humidity={
-              currentLocationWeather && currentLocationWeather.main.humidity
-            }
+            wind={currentWeather && currentWeather.wind.speed}
+            humidity={currentWeather && currentWeather.main.humidity}
           />
           <HistoryContainer history={history} />
         </SideBar>
