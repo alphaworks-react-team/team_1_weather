@@ -21,7 +21,7 @@ const SearchButton = styled.button`
 
 const SearchForm = styled.form`
   height: 10%;
-  width: ;
+  width: 78%;
   display: flex;
   justify-content: space-between;
   align-items: center;

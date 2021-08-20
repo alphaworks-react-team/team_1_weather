@@ -31,11 +31,11 @@ const Icons = (props) => {
                 return hot
             case "overcast clouds":
                 return cloudyDay
-            case "broken clouds" || "partly cloudy":
+            case "broken clouds" || "few clouds":
                 return partlyCloudyDay
-            case "light rain" || "scatter rain":
+            case "light rain" || "moderate rain":
                 return lightRain
-            case "light snow" || "scatter snow":
+            case "light snow" || "moderate snow":
                 return lightSnow
             case "haze" || "hazey":
                 return lightHaze
