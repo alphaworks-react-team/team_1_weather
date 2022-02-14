@@ -14,10 +14,10 @@ const SearchButton = styled.button`
   width: auto;
   border-radius: 50%;
   text-decoration: none;
-  padding:0
+  padding:0;
   border: none;
   background-color: blue;
-`;
+`
 
 const SearchForm = styled.form`
   height: 10%;
