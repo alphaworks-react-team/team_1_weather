@@ -67,7 +67,7 @@ const CurrentWeather = (props) => {
         <GoLocation /> {props.location}
       </div>
       <div style={styles.icons}>
-        <Icons description={props.description} />
+        <Icons  description={props.description} />
       </div>
       <div style={styles.temp}>{props.temp}°</div>
       <div style={styles.description}>{props.description}</div>

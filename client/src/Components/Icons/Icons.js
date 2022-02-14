@@ -17,27 +17,31 @@ import nightTStorm from "../../assets/47.png";
 import nightHeavyRain from "../../assets/45.png";
 import nightSnow from "../../assets/46.png";
 import nightHaze from "../../assets/22.png";
+import overCast from "../../assets/26.png"
+// import sunAndWhiteClouds from "../../assets/video/Sun&WhiteClouds.mp4"
+import whiteCloudsMoveBlockSun from "../../assets/video/WhiteCloudsMoving&BlockSun.mp4"
+
 
 const Icons = (props) => {
   const returnIcon = () => {
     switch (props.description) {
-      case "clear sky" || "sunny":
+      case "clear sky" && "sunny":
         return sunny;
-      case "thunder":
+      case "thunderstorm" && "thunderstorm with heavy rain" :
         return dayTStorm;
       case "wind >== 8":
         return windy;
-      case "sunny" || "hot":
+      case "sunny" && "hot":
         return hot;
       case "overcast clouds":
-        return cloudyDay;
-      case "broken clouds" || "few clouds":
-        return partlyCloudyDay;
-      case "light rain" || "moderate rain":
+        return whiteCloudsMoveBlockSun;
+      case ("broken clouds" || "few clouds" && "scattered clouds"):
+        return partlyCloudyNight;
+      case "light rain" && "moderate rain":
         return lightRain;
-      case "light snow" || "moderate snow":
+      case "light snow" && "moderate snow":
         return lightSnow;
-      case "haze" || "hazey":
+      case "smoke":
         return lightHaze;
       case "heavy rain":
         return dayHeavyRain;
@@ -55,13 +59,20 @@ const Icons = (props) => {
         return nightHeavyRain;
       case "snow" && "snow":
         return nightSnow;
-      case "haze" || ("hazey" && "night"):
+      case "haze" || ("hazy" && "night"):
         return nightHaze;
+      default: 
+        return  sunny;
     }
   };
-  return <img src={returnIcon()} alt="broken image" />;
+  return <video style={styles} autoPlay unMuted src={returnIcon()} loop alt="broken image" />;
 };
 
-  
+const styles = 
+{
+ boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+ backdropFilter: "blur(4px)",
+ webkitBbackdropFilter: "blur(4px)",
+}
 
 export default Icons;

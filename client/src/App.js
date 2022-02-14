@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Main from "./Components/Main/MainGlass";
 import Body from "./Components/Body/Body";
-import rain from "./assets/video/rain.mp4";
-import clear from "./assets/video/ScatteredClouds.mp4"
-import snow from "./assets/video/Snow.mp4";
+// import rain from "./assets/video/rain.mp4";
+// import clear from "./assets/video/ScatteredClouds.mp4"
+// import snow from "./assets/video/Snow.mp4";
 import SideBar from "./Components/SideBar/SideBar";
 import DailyForecast from "./Components/DailyForecast/DailyForecast";
 import Search from "./Components/Search/Search";
@@ -13,12 +13,12 @@ import {
 	currentWeatherData,
 	dailyWeatherData,
 	getCurrentLocationWeather,
-	chooseVideo,
+	// chooseVideo,
 } from "./utils/utils";
 import HourlyData from "./Components/HourlyData/HourlyData";
 import CurrentWeather from "./Components/CurrentWeather/CurrentWeather";
 import { AppStyle } from "./AppStyle";
-import Video from "./Components/Video/Video";
+// import Video from "./Components/Video/Video";
 
 function App() {
 	// const [latitude, setLatitude] = useState();
@@ -104,7 +104,7 @@ function App() {
 	return (
 		// chooseVideo(currentWeather.weather[0].main)
 		<AppStyle>
-			<Video src={currentWeather&&chooseVideo(currentWeather.weather[0].main)} />
+			{/* <Video src={currentWeather&&chooseVideo(currentWeather.weather[0].main)} /> */}
 			<Main>
 				<Body>
 					<TimeDay weather={currentWeather} />
